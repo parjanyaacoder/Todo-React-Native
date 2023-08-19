@@ -6,7 +6,7 @@ import Screens from '../constants/Screens';
 const MonthlyTodoListPage = (props) => {
   const navigation = useNavigation();
   return (
-    <View style={{ flex: 1, backgroundColor: "white", alignItems: "center", justifyContent:"center"  }} >
+    <View style={{ height: "100%", width: "100%", backgroundColor: "white", alignItems: "center", justifyContent:"center"  }} >
     <Pressable onPress={() => {
       navigation.navigate(Screens.HOME_PAGE)
     }}>

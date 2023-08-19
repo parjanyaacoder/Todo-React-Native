@@ -9,7 +9,7 @@ const HomePage = (props) => {
     const navigation = useNavigation();
   
   return (
-    <View style={{ flex: 1, backgroundColor: "white", alignItems: "center", justifyContent:"center"  }} >
+    <View style={{ height: "100%", width: "100%",  backgroundColor: "white", alignItems: "center", justifyContent:"center"  }} >
     <Pressable onPress={() => {
       navigation.navigate(Screens.TODO_DETAILS_PAGE)
     }}>
