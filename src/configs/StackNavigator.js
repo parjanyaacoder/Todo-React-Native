@@ -12,7 +12,7 @@ const Stack = createStackNavigator();
 
 const StackNavigator = () => {
     return (
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={{ headerShown: false }} >
         <Stack.Screen name={Screens.HOME_PAGE} component={HomePage} />
         <Stack.Screen name={Screens.TODO_DETAILS_PAGE} component={TodoDetailsPage} />
         <Stack.Screen name={Screens.CREATE_TODO_PAGE} component={CreateTodoPage} />
