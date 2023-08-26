@@ -19,7 +19,8 @@ const styles = StyleSheet.create({
     },
     bgStyles: {
         backgroundColor: "#C4C4C4"
-    }
+    },
+    
 });
 
 export default styles;
