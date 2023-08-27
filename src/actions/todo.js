@@ -1,6 +1,6 @@
 const actionTypePrefix = 'TODO'
 
-const TodoActionTypes = {
+export const TodoActionTypes = {
     FETCH_RECENT_TODOS: `${actionTypePrefix}/FETCH_RECENT_TODOS`,
     FETCH_RECENT_TODOS_SUCCESS: `${actionTypePrefix}/FETCH_RECENT_TODOS_SUCCESS`,
     FETCH_RECENT_TODOS_FAILURE: `${actionTypePrefix}/FETCH_RECENT_TODOS_FAILURE`,
