@@ -13,6 +13,8 @@ export const TodoActionTypes = {
     FETCH_MONTHLY_TODOS: `${actionTypePrefix}/FETCH_MONTHLY_TODOS`,
     FETCH_MONTHLY_TODOS_SUCCESS: `${actionTypePrefix}/FETCH_MONTHLY_TODOS_SUCCESS`,
     FETCH_MONTHLY_TODOS_FAILURE: `${actionTypePrefix}/FETCH_MONTHLY_TODOS_FAILURE`,
+    CREATE_TODO: `${actionTypePrefix}/CREATE_TODO`,
+    UPDATE_TODO: `${actionTypePrefix}/UPDATE_TODO`,  
 };
 
 const fetchDailyTodos = () => ({
@@ -71,6 +73,16 @@ const fetchRecentTodosFailure = (error) => ({
     payload: error,
 });
 
+const createTodo = (payload) => ({
+    type: TodoActionTypes.CREATE_TODO,
+    payload,
+});
+
+const updateTodo = (payload) => ({
+    type: TodoActionTypes.UPDATE_TODO,
+    payload,
+});
+
 const TodoActions = {
     fetchDailyTodos,
     fetchDailyTodosSuccess,
@@ -84,6 +96,8 @@ const TodoActions = {
     fetchRecentTodos,
     fetchRecentTodosSuccess,
     fetchRecentTodosFailure,
+    createTodo,
+    updateTodo
 };
 
 export default TodoActions;

@@ -5,6 +5,7 @@ import TodoItem from './TodoItem';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useSelector } from 'react-redux';
 import TodoSelectors from '../selectors/todo';
+import styles from '../styles/RecentTodosStyles';
 
 const RecentTodos = () => {
   const data = useSelector(TodoSelectors.getRecentTodos)
@@ -17,11 +18,11 @@ const RecentTodos = () => {
   }
 
   const renderHeaderComponent = () => (
-    <Text style={{ marginBottom: 8 }} >{"Recent Todos"}</Text>
+    <Text style={styles.marginBtn8} >{"Recent Todos"}</Text>
   )
 
   const renderItemSeparator = () => (
-    <View style={{ height: 3, backgroundColor: "#ffffff", width: "100%", marginVertical: 12, borderRadius: 12 }} />
+    <View style={styles.itemSeparator} />
   )
 
 
@@ -29,8 +30,8 @@ const RecentTodos = () => {
       <FlatList
       data={data}
       keyboardShouldPersistTaps={"always"}
-      contentContainerStyle={{ width: "100%" }}
-      style={{ width: "100%" }}
+      contentContainerStyle={styles.fullWidth}
+      style={styles.flatlistStyle}
       renderItem={renderItem}
       scrollEnabled
       ListFooterComponent={renderItemSeparator}

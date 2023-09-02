@@ -20,7 +20,23 @@ const styles = StyleSheet.create({
     bgStyles: {
         backgroundColor: "#C4C4C4"
     },
-    
+    itemSeparator: {
+        height: 3,
+        backgroundColor: "#ffffff",
+        width: "100%",
+        marginVertical: 12,
+        borderRadius: 12
+    },
+    marginBtn8: {
+        marginBottom: 8
+    },
+    flatlistStyle: {
+        width: "100%",
+        height: "100%"
+    },
+    fullWidth: {
+        width: "100%"
+    }
 });
 
 export default styles;

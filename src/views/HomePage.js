@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { View, Pressable, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Screens from '../constants/Screens';
 import styles from '../styles/HomePageStyles';
@@ -13,23 +13,35 @@ import TodoActions from '../actions/todo';
 const HomePage = (props) => {
     const navigation = useNavigation();
     const dispatch = useDispatch()
+
+    const onFabPress = () => {
+      console.log("ParjantaPress")
+      navigation.navigate(Screens.CREATE_TODO_PAGE)
+    }
+
     useEffect(() => {
       dispatch(TodoActions.fetchRecentTodos())
     }, [])
   
   return (
   <View style={styles.bgStyles} >
-    <View style={styles.top} >
-      <View style={styles.container}>
+    <View style={styles.container}>
       <ProgressView />
       <CategoriesList />
-      </View>
     </View>
     <View style={styles.bottom} >
-    <View style={styles.container}>
+    <View style={styles.bottomContainer}>
       <RecentTodos />
     </View>
      </View>
+     <TouchableOpacity onPress={onFabPress} style={styles.fabBtn} >
+      <View >
+      <Text style={styles.addIcon} >
+        {'+'}
+      </Text>
+      </View>
+    </TouchableOpacity>
+    
 </View>
   );
 };
