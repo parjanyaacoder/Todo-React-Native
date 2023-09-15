@@ -1,18 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Pressable, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Screens from '../constants/Screens';
 import styles from '../styles/CreateTodoPageStyles';
+import isEmpty from '../utils/isEmpty';
+import { useDispatch } from 'react-redux';
+import TodoActions from '../actions/todo';
 
 const CreateTodoPage = (props) => {
     const navigation = useNavigation();
+    const dispatch = useDispatch();
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+
 
     const onCancel = () => {
-        navigation.navigate(Screens.DAILY_TODO_LIST_PAGE)
+        navigation.pop();
     };
 
     const onSubmit = () => {
-        
+        const payload = {
+            title: title,
+            description: description,
+            date: Date.now(),
+            cb: (err, data) => {
+                if (err) {
+                    
+                } else {
+                    navigation.pop();
+                }
+            }
+        }
+        if (!isEmpty(title) &&!isEmpty(description)) {
+            dispatch(TodoActions.createTodo(payload));
+        }
     };
 
     const onFabPress = () => {}
@@ -36,11 +57,15 @@ const CreateTodoPage = (props) => {
                 placeholder='Title'
                 placeholderTextColor={'blue'}
                 autoFocus={true}
+                onChangeText={title => setTitle(title)}
+                value={title}
             />
             <TextInput style={styles.descriptionInput}
                 onSubmitEditing={() => { }}
                 placeholder='Description'
                 placeholderTextColor={'blue'}
+                onChangeText={description => setDescription(description)}
+                value={description}
             />
 
             <View style={styles.ctaRow}>

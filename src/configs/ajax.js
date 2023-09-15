@@ -69,8 +69,8 @@ const create = (() => {
         const headers = getHeaders(urlOrRequest.headers) 
         urlOrRequest.headers = headers
         return AjaxObservable(urlOrRequest).pipe(catchError((err) => {
-            console.log('create: failed:', url)
-        throw err
+            console.log('create: failed:', urlOrRequest)
+            throw err
         }))
     }
 

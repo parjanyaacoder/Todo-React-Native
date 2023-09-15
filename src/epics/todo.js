@@ -74,9 +74,37 @@ const fetchWeeklyTodos = ($action, store, { ajax }) => (
     }))
 )
 
+const createTodo = ($action, store, { ajax }) => (
+    $action.pipe(ofType(TodoActionTypes.CREATE_TODO), 
+    mergeMap(({payload}) => {
+        const api = apis.createTodo()
+        const { cb }  = payload || {}
+        const body = {
+            title: payload?.title,
+            description: payload?.description,
+            date: payload?.date
+        }
+        const requestOptions = getRequestOptions(api, requestTypes.POST, defaultHeaders, body)
+        return ajax(requestOptions)
+        .pipe(mergeMap(({response}) => {ś
+            if (!isEmpty(response?.data)) {
+                cb?.(null, response?.data)
+                 return []
+            }
+            cb?.(null,  response?.data)
+            return []
+        }),
+        catchError(err => {cb?.(err)
+            return []
+        })
+        )
+    }))
+)
+
 export default combineEpics(
     fetchRecentTodos,
     fetchDailyTodos,
     fetchMonthlyTodos,
     fetchWeeklyTodos,
+    createTodo
 )
